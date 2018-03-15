@@ -1,4 +1,7 @@
  <?php
+  //300 seconds = 5 minutes
+  ini_set('max_execution_time', 300); 
+
   // Baca lokasi file sementar dan nama file dari form (fupload)
   include('class.pdf2text.php');
   //include_once 'IDNstemmer.php';
@@ -80,7 +83,7 @@
     mysqli_query($konek, $query);
     
     $tekspdf = new PDF2Text();
-    
+    echo "<br>";
     echo $nama_file;
    // $nama_file="./folder/"."uupangan2.pdf";
    $nama_file="./files/".$nama_file;
