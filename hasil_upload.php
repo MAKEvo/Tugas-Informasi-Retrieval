@@ -53,7 +53,7 @@
             //$st->doStemming($filteredarray)
             //  echo " ".$hasil.'<br>';
             $query = "INSERT INTO dokumen (nama_file, token) VALUES('$nama_file', '$filteredarray')";
-            // echo ">>".$query;   
+            echo ">>".$query;   
             mysqli_query($konek, $query);    
                  
           }   
