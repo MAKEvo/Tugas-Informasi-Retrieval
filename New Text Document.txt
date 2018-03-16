@@ -1,0 +1,132 @@
+<!--more-->
+
+<strong>NIM                  : 15.01.55.0031
+Nama               : Muhammad Andry Kurniawan
+Mata kuliah   : Informasi Retrieval</strong>
+
+A. Laporan Pratikum :
+<ol>
+	<li>Deskripsi masalah :</li>
+	<li>Istilah penting   :
+<ul>
+	<li>Tokenisasi : proses untuk membagi teks yang dapat berupa kalimat, paragraf atau dokumen, menjadi token-token/bagian-bagian tertentu.</li>
+	<li>Stopword : kata umum (common words) yang biasanya muncul dalam jumlah besar dan dianggap tidak memiliki makna.</li>
+	<li>Stopword removal : Sebuah proses pemfilteran kata - kata yang umum.</li>
+</ul>
+</li>
+	<li>Perintah program yang baru :
+<ul>
+	<li>move_uploaded_file($lokasi_file,”$folder”) : memindakan file dari lokasi awal ke tempat penyimpanan files upload.</li>
+	<li>mysqli_connect(“localhost”,”root”,””,”dbstbi”) : untuk menghubungkan file php dengan database dbstbi.</li>
+	<li>include(‘class.pdf2text.php’) : untuk menyertakan file secara eksternal kedalam file upload.php .</li>
+	<li>tolower(trim($teks)): mengubah teks menjadi huruf kecil.</li>
+	<li>explode(” “, $teks): untuk memisahkan teks.</li>
+	<li>array_diff($myArray, $astoplist) :</li>
+</ul>
+</li>
+	<li>Alur program :
+Start -> Unggah Pdf -> Simpan Ke Tabel Upload -> Baca File Pdf -> Tokenisasi ->Simpan -> Keluar</li>
+</ol>
+B. Pengujian Program
+<table>
+<tbody>
+<tr>
+<th>No.</th>
+<td><strong>1.</strong></td>
+</tr>
+<tr>
+<th>Tujuan Pengujian</th>
+<td>1. Mengunggah File
+2. Tokenisasi
+3. Stopword Removal</td>
+</tr>
+<tr>
+<th>Input</th>
+<td>PDF = uu_nomor_1_tahun_2004_ttg_perbendaharaan</td>
+</tr>
+<tr>
+<th>Luaran Diharapkan</th>
+<td>Yang diharapkan, Pdf sukses di upload dan kalimat yang terdapat di dalam pdf dapat di pisah per kata dan di filter dari kata - kata umum.</td>
+</tr>
+<tr>
+<th>Luaran Actual</th>
+<td>Pdf berhasil diupload tetapi kata - kata di dalam pdf tidak bisa di tokenisasi</td>
+</tr>
+<tr>
+<th>Status</th>
+<td><strong>Gagal</strong></td>
+</tr>
+<tr>
+<th>Analisa</th>
+<td>Analisa saya, yang membuat proses tokenisasi gagal karena format pdf yang tidak mendukung.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr>
+<th>No.</th>
+<td><strong>2.</strong></td>
+</tr>
+<tr>
+<th>Tujuan Pengujian</th>
+<td>1. Mengunggah File
+2. Tokenisasi
+3. Stopword Removal</td>
+</tr>
+<tr>
+<th>Input</th>
+<td>PDF = uu_nomor_7_tahun_2004_ttg_sda</td>
+</tr>
+<tr>
+<th>Luaran Diharapkan</th>
+<td>Yang diharapkan, Pdf sukses di upload dan kalimat yang terdapat di dalam pdf dapat di pisah per kata dan di filter dari kata - kata umum.</td>
+</tr>
+<tr>
+<th>Luaran Actual</th>
+<td>Pdf berhasil diupload tetapi kata - kata di dalam pdf tidak bisa di tokenisasi</td>
+</tr>
+<tr>
+<th>Status</th>
+<td><strong>Gagal</strong></td>
+</tr>
+<tr>
+<th>Analisa</th>
+<td>Analisa saya, yang membuat proses tokenisasi gagal karena format pdf yang tidak mendukung.</td>
+</tr>
+</tbody>
+</table>
+<table>
+<tbody>
+<tr>
+<th>No.</th>
+<td><strong>3.</strong></td>
+</tr>
+<tr>
+<th>Tujuan Pengujian</th>
+<td>1. Mengunggah File
+2. Tokenisasi
+3. Stopword Removal</td>
+</tr>
+<tr>
+<th>Input</th>
+<td>PDF = uu_nomor_16_tahun_1992_karantina_hewan_ikan_dan_tumbuhan</td>
+</tr>
+<tr>
+<th>Luaran Diharapkan</th>
+<td>Yang diharapkan, Pdf sukses di upload dan kalimat yang terdapat di dalam pdf dapat di pisah per kata dan di filter dari kata - kata umum.</td>
+</tr>
+<tr>
+<th>Luaran Actual</th>
+<td>Pdf berhasil diupload dan kata - kata di dalam pdf berhasil di tokenisasi</td>
+</tr>
+<tr>
+<th>Status</th>
+<td><strong>Berhasil</strong></td>
+</tr>
+<tr>
+<th>Analisa</th>
+<td>-</td>
+</tr>
+</tbody>
+</table>
