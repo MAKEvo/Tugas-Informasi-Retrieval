@@ -1,10 +1,10 @@
- <?php
+  <?php
   //300 seconds = 5 minutes
-  //ini_set('max_execution_time', 300); 
+  ini_set('max_execution_time', 300); 
 
   // Baca lokasi file sementar dan nama file dari form (fupload)
   include('class.pdf2text.php');
-  //include_once 'IDNstemmer.php';
+  include_once 'IDNstemmer.php';
   //include('Enhanced_CS.php');
   function preproses($teks,$nama_file) { 
     //bersihkan tanda baca, ganti dengan space 
@@ -39,7 +39,7 @@
 
      //remove stopword
      $filteredarray = array_diff($myArray, $astoplist); 
-     // $st = new IDNstemmer();
+     $st = new IDNstemmer();
      $konek = mysqli_connect("localhost","root","","dbstbi");
 
 
@@ -49,10 +49,10 @@
         if (strlen($filteredarray) >=4)
           {
             //echo ">>".$filteredarray;
-            //$hasil=$st->doStemming($filteredarray);
-            //$st->doStemming($filteredarray)
+            $hasil=$st->doStemming($filteredarray);
+            // $st->doStemming($filteredarray)
             //  echo " ".$hasil.'<br>';
-            $query = "INSERT INTO dokumen (nama_file, token) VALUES('$nama_file', '$filteredarray')";
+            $query = "INSERT INTO dokumen (nama_file, token, tokenstem) VALUES('$nama_file', '$filteredarray', '$hasil')";
             echo ">>".$query;   
             mysqli_query($konek, $query);    
                  
