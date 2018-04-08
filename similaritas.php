@@ -26,18 +26,20 @@
       echo "0 results";
       }
 
-    // Menampilkan Daftar PDF
-    echo "Daftar PDF : <br>";
-    for ($i=0; $i < count($pdf); $i++) { 
-      echo $i." ";
-      echo $pdf[$i];
-      echo "<br>";
-    }
+    // // Menampilkan Daftar PDF
+      $i=0;
+      while ($i<count($pdf)) {
+        echo $i." ";
+        echo $pdf[$i];
+        echo "<br>";
+      $i++;
+      }
 
     echo "<br><br>";
 
     // Proses Looping similaritas
-    for ($i=0; $i < count($pdf); $i++) {
+    $i=0;
+    while ($i<count($pdf)) {
       $query = "SELECT tokenstem FROM `dokumen` where nama_file='$pdf[$i]'";
       $result =mysqli_query($konek, $query);
       $undang1 = array();
@@ -50,26 +52,29 @@
           echo "0 results";   
         }
     
-    for ($j=$i+1; $j < count($pdf); $j++) { 
-      $query2 = "SELECT tokenstem  FROM `dokumen` where nama_file='$pdf[$j]'";
-      $result2 =mysqli_query($konek, $query2);
-      
-      if (mysqli_num_rows($result2) > 0) {
-        $undang2 = array();
+      $j=$i+1;
+      while ($j<count($pdf))  { 
+        $query2 = "SELECT tokenstem  FROM `dokumen` where nama_file='$pdf[$j]'";
+        $result2 =mysqli_query($konek, $query2);
+        
+        if (mysqli_num_rows($result2) > 0) {
+          $undang2 = array();
 
-        while ($row = mysqli_fetch_assoc($result2)) {
-          $undang2[]=$row{'tokenstem'}; 
+          while ($row = mysqli_fetch_assoc($result2)) {
+            $undang2[]=$row{'tokenstem'}; 
+          }
+        } else {
+          echo "0 results";
         }
-      } else {
-        echo "0 results";
+      
+          // Tampilan Hasil Proses Looping
+          echo "Similaritas pdf ke ".$i." dan pdf ke ".$j. " "."= ";
+          $hasil=getSimilarityCoefficient( $undang1, $undang2 );
+          echo $hasil;
+          echo "<br>";
+      $j++;
       }
-    
-        // Tampilan Hasil Proses Looping
-        echo "Similaritas pdf ke ".$i." dan pdf ke ".$j. " "."= ";
-        $hasil=getSimilarityCoefficient( $undang1, $undang2 );
-        echo $hasil;
-        echo "<br>";
-      }
+    $i++;  
     }
   
   // Disconnect Database
